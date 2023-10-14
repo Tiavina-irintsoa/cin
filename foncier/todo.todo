@@ -1,0 +1,18 @@
+Sanre: 
+    ✔ deployer @done(23-10-14 16:29)
+Foncier:
+    ✔ Base foncier @done(23-10-14 16:29)
+    ✔ fichier deploiement @done(23-10-14 16:53)
+    ✔ data source @done(23-10-14 16:53)
+    ✔ getCitoyen (ejb) @done(23-10-14 17:52)
+    ✔ getInformations fonciers @done(23-10-14 17:52)
+    ✔ serveur ejb @done(23-10-14 17:52)
+CIN:
+    ☐ affichage 
+    ☐ servlet
+    ☐ miantso sante
+    ☐ miantso foncier 
+    ☐ affichage resultat 
+    ☐ dynamisation resultat 
+
+

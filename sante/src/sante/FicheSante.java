@@ -1,20 +1,20 @@
 package sante;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Query;
 import jakarta.persistence.Table;
-import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "citoyen")
-public class FicheSante extends Citoyen implements Serializable {
-
-  private static final long serialVersionUID = 1L;
+public class FicheSante extends Citoyen {
 
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
@@ -35,6 +35,18 @@ public class FicheSante extends Citoyen implements Serializable {
     inverseJoinColumns = { @JoinColumn(name = "idMaladie") }
   )
   Set<Maladie> maladie;
+
+  public static FicheSante getFicheSante(EntityManager manager, String idcin) {
+    String req = "select * from citoyen where idcin = '" + idcin + "'";
+    Query query = manager.createNativeQuery(req, FicheSante.class);
+    List<FicheSante> citoyens = (List<FicheSante>) query.getResultList();
+    FicheSante result = citoyens.get(0);
+    return result;
+  }
+
+  public FicheSante(String idcin) {
+    super(idcin);
+  }
 
   public FicheSante() {
     super();
@@ -62,10 +74,6 @@ public class FicheSante extends Citoyen implements Serializable {
 
   public void setMaladie(Set<Maladie> maladie) {
     this.maladie = maladie;
-  }
-
-  public static long getSerialversionuid() {
-    return serialVersionUID;
   }
 
   public Set<Allergie> getAllergie() {

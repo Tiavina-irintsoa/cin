@@ -4,8 +4,8 @@ import jakarta.json.bind.annotation.JsonbTypeSerializer;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.*;
 import serialisers.CustomDateSerializer;
+
 @Entity
 @Table(name = "citoyen")
 public class Citoyen implements Serializable {
@@ -19,12 +19,32 @@ public class Citoyen implements Serializable {
   String prenom;
 
   String adresse;
-  @JsonbTypeSerializer(CustomDateSerializer.class)
 
+  @JsonbTypeSerializer(CustomDateSerializer.class)
   @Column(name = "datenaissance")
   Date dateNaissance;
 
-  public Citoyen(String idcin, String nom, String prenom, String adresse, Date dateNaissance) {
+  public Citoyen(String idcin) {
+    this.idcin = idcin;
+  }
+
+
+
+  public void getCitoyen(EntityManager manager) {
+    FicheSante result = FicheSante.getFicheSante(manager, idcin);
+    setNom(result.getNom());
+    setPrenom(result.getPrenom());
+    setAdresse(result.getAdresse());
+    setDateNaissance(getDateNaissance());
+  }
+
+  public Citoyen(
+    String idcin,
+    String nom,
+    String prenom,
+    String adresse,
+    Date dateNaissance
+  ) {
     this.idcin = idcin;
     this.nom = nom;
     this.prenom = prenom;
@@ -32,8 +52,7 @@ public class Citoyen implements Serializable {
     this.dateNaissance = dateNaissance;
   }
 
-  public Citoyen() {
-  }
+  public Citoyen() {}
 
   public static long getSerialversionuid() {
     return serialVersionUID;
@@ -81,7 +100,18 @@ public class Citoyen implements Serializable {
 
   @Override
   public String toString() {
-    return "Citoyen [idcin=" + idcin + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse
-        + ", dateNaissance=" + dateNaissance + "]";
+    return (
+      "Citoyen [idcin=" +
+      idcin +
+      ", nom=" +
+      nom +
+      ", prenom=" +
+      prenom +
+      ", adresse=" +
+      adresse +
+      ", dateNaissance=" +
+      dateNaissance +
+      "]"
+    );
   }
 }

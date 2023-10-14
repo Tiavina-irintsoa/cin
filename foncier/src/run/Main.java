@@ -7,11 +7,9 @@ import javax.naming.InitialContext;
 import sante.Citoyen;
 
 public class Main {
-
   public static void main(String[] args) {
     try {
-        System.setProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager");
-
+      System.setProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager");
       Properties properties = new Properties();
       properties.put(
         Context.INITIAL_CONTEXT_FACTORY,
@@ -21,7 +19,7 @@ public class Main {
       // Initialisation du contexte JNDI: un service de gestion des nom
       Context context = new InitialContext(properties);
       // Recherche de l'EJB en utilisant le nom JNDI
-      String jndiName = "ejb:sante/sante.jar/EjbCitoyen!ejb.EjbRemote"; // le nom JNDI
+      String jndiName = "ejb:sante/sante/EjbCitoyen!ejb.EjbRemote"; // le nom JNDI
       EjbRemote remote = (EjbRemote) context.lookup(jndiName);
 
       // Appel de méthodes de l'EJB
