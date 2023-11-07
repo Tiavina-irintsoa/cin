@@ -1,0 +1,27 @@
+sante:
+    ✔ table devise @done(23-10-16 09:43)
+    ✔ table cours @done(23-10-16 09:43)
+    ✔ vue cours actuelle /iddevise @done(23-10-16 10:00)
+    ✔ WebService liste devise @done(23-10-16 10:15)
+    ✔ web service cours actuelle /iddevise @done(23-10-16 11:27)
+banque:
+    ✔ table transfert @done(23-10-16 14:35)
+    ✔ getDevises WS @done(23-10-16 14:35)
+    ✔ getCours @done(23-10-16 21:53)
+    ☐ insertion @transfert
+    ✔ verification hoe ampy ny vola olona 1 @done(23-10-16 22:01)
+    ☐ insert @Operation olona 1
+    ☐ insert @Operation olona 2
+    ☐ Controller insert
+predidence:
+    ✔ getDevise WS @done(23-10-16 20:56)
+    ☐ controller transfert
+    ✔ affichage transfert @done(23-10-16 20:46)
+    ☐ servlet envoi
+Classes Sante:
+    ✔ Devise: iddevise, nomdevise @done(23-10-16 10:08)
+    ✔ Cours: Devise devise, double taux @done(23-10-16 10:08)
+
+Classes  banque:
+    ✔ Devise: iddevise, nomDevise @done(23-10-16 11:34)
+    ✔ Transfert: idtransfert, Citoyen mandefa, Citoyen maka , Devise, double montant @done(23-10-16 11:40)

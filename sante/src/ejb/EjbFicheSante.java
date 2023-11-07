@@ -13,5 +13,4 @@ public class EjbFicheSante implements FicheSanteRemote{
     public FicheSante getFicheSante(String idcin) throws Exception {
         return FicheSante.getFicheSante(manager, idcin);
     }
-    
 }

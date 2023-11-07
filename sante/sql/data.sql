@@ -51,3 +51,44 @@ VALUES
     ('CIN001', 1),
     ('CIN002', 2),
     ('CIN003', 3);
+
+-- Insérer des données de devise
+INSERT INTO devise (nomDevise) VALUES ('Euro');
+INSERT INTO devise (nomDevise) VALUES ('USD');
+INSERT INTO devise (nomDevise) VALUES ('Yen');
+INSERT INTO devise (nomDevise) VALUES ('Ariary');
+-- Taux pour une semaine (7 jours)
+INSERT INTO cours (idDevise, tauxAchat,tauxVente, dateCours) VALUES
+    (1, 4750.56,4500, CURRENT_DATE - INTERVAL '7 days'),  -- Il y a une semaine
+    (1, 4750.67,4500, CURRENT_DATE - INTERVAL '6 days'),  -- Il y a 6 jours
+    (1, 4750.78,4500, CURRENT_DATE - INTERVAL '5 days'),  -- Il y a 5 jours
+    (1, 4750.89,4500, CURRENT_DATE - INTERVAL '4 days'),  -- Il y a 4 jours
+    (1, 4750.90,4500, CURRENT_DATE - INTERVAL '3 days'),  -- Il y a 3 jours
+    (1, 4750.91,4500, CURRENT_DATE - INTERVAL '2 days'),  -- Il y a 2 jours
+    (1, 4750.12,4500, CURRENT_DATE - INTERVAL '1 day');   -- Hier
+INSERT INTO cours (idDevise, tauxAchat,tauxVente, dateCours) VALUES (2,4000,3500,CURRENT_DATE);
+INSERT INTO cours (idDevise, tauxAchat,tauxVente, dateCours) VALUES (4,1,1,CURRENT_DATE);
+    -- Taux pour une semaine (7 jours)
+INSERT INTO cours (idDevise, tauxAchat,tauxVente, dateCours) VALUES
+    (2, 4510.56,4000, CURRENT_DATE - INTERVAL '7 days'),  -- Il y a une semaine
+    (2, 4510.67,4000, CURRENT_DATE - INTERVAL '6 days'),  -- Il y a 6 jours
+    (2, 4510.78,4000, CURRENT_DATE - INTERVAL '5 days'),  -- Il y a 5 jours
+    (2, 4510.89,4000, CURRENT_DATE - INTERVAL '4 days'),  -- Il y a 4 jours
+    (2, 4510.90,4000, CURRENT_DATE - INTERVAL '3 days'),  -- Il y a 3 jours
+    (2, 4510.91,4000, CURRENT_DATE - INTERVAL '2 days'),  -- Il y a 2 jours
+    (2, 4510.12,4000, CURRENT_DATE - INTERVAL '1 day');   -- Hier
+
+-- Taux pour une semaine (7 jours)
+INSERT INTO cours (idDevise, tauxAchat,tauxVente ,dateCours) VALUES
+    (3, 154.56,130, CURRENT_DATE - INTERVAL '7 days'),  -- Il y a une semaine
+    (3, 154.67,130, CURRENT_DATE - INTERVAL '6 days'),  -- Il y a 6 jours
+    (3, 154.78,130, CURRENT_DATE - INTERVAL '5 days'),  -- Il y a 5 jours
+    (3, 154.89,130, CURRENT_DATE - INTERVAL '4 days'),  -- Il y a 4 jours
+    (3, 154.90,130, CURRENT_DATE - INTERVAL '3 days'),  -- Il y a 3 jours
+    (3, 154.91,130, CURRENT_DATE - INTERVAL '2 days'),  -- Il y a 2 jours
+    (3, 154.12,130, CURRENT_DATE - INTERVAL '1 day');   -- Hier
+
+
+------alea
+INSERT INTO cours (idDevise, tauxAchat,tauxVente, dateCours) VALUES (2,4930,4450,CURRENT_DATE);
+INSERT INTO cours (idDevise, tauxAchat,tauxVente, dateCours) VALUES (1,5150,4890,CURRENT_DATE);

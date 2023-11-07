@@ -35,7 +35,7 @@ public class Citoyen implements Serializable {
     setNom(result.getNom());
     setPrenom(result.getPrenom());
     setAdresse(result.getAdresse());
-    setDateNaissance(getDateNaissance());
+    setDateNaissance(result.getDateNaissance());
   }
 
   public Citoyen(

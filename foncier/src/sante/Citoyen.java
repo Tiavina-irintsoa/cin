@@ -1,9 +1,7 @@
 package sante;
 
-import ejb.*;
 import java.io.Serializable;
 import java.sql.Date;
-import javax.naming.Context;
 
 public class Citoyen implements Serializable {
 
@@ -22,16 +20,18 @@ public class Citoyen implements Serializable {
     this.idcin = idcin;
   }
 
-  public static Citoyen getCitoyenInEjb(String idcin) throws Exception {
-    EjbClient client = new EjbClient();
-    Context context = client.getContextEjb();
-    String jndiName = "ejb:sante/sante/EjbCitoyen!ejb.EjbRemote";
-    EjbRemote remote = (EjbRemote) context.lookup(jndiName);
-    Citoyen result = remote.getCitoyen(idcin);
-    System.out.println(result);
-    context.close();
-    return result;
-  }
+  public Citoyen() {}
+
+  // public static Citoyen getCitoyenInEjb(String idcin) throws Exception {
+  //   EjbClient client = new EjbClient();
+  //   Context context = client.getContextEjb();
+  //   String jndiName = "ejb:sante/sante/EjbCitoyen!ejb.EjbRemote";
+  //   EjbRemote remote = (EjbRemote) context.lookup(jndiName);
+  //   Citoyen result = remote.getCitoyen(idcin);
+  //   System.out.println(result);
+  //   context.close();
+  //   return result;
+  // }
 
   public static long getSerialversionuid() {
     return serialVersionUID;

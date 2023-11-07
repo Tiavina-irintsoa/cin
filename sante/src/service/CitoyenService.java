@@ -8,7 +8,7 @@ import jakarta.ws.rs.core.MediaType;
 import sante.Citoyen;
 import sante.FicheSante;
 
-@Path("/citoyen")
+@Path("/citoyens")
 @Stateless
 public class CitoyenService {
 
@@ -23,7 +23,7 @@ public class CitoyenService {
   }
 
   @GET
-  @Path("/get/{cin}")
+  @Path("/{cin}")
   @Produces(MediaType.APPLICATION_JSON)
   public Citoyen getCitoyen(@PathParam("cin") String cin) {
     Citoyen result = new Citoyen(cin);

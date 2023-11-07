@@ -9,8 +9,10 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Query;
 import jakarta.persistence.Table;
+import jakarta.transaction.Transactional;
+
 import java.util.List;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "citoyen")
@@ -22,11 +24,11 @@ public class FicheSante extends Citoyen {
     joinColumns = { @JoinColumn(name = "idcin") },
     inverseJoinColumns = { @JoinColumn(name = "idAllergie") }
   )
-  Set<Allergie> allergie;
+  List<Allergie> allergie;
 
   @OneToMany(fetch = FetchType.EAGER)
   @JoinColumn(name = "idcin")
-  Set<Operation> operation;
+  List<Operation> operation;
 
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
@@ -34,10 +36,12 @@ public class FicheSante extends Citoyen {
     joinColumns = { @JoinColumn(name = "idcin") },
     inverseJoinColumns = { @JoinColumn(name = "idMaladie") }
   )
-  Set<Maladie> maladie;
+  List<Maladie> maladie;
 
+  @Transactional
   public static FicheSante getFicheSante(EntityManager manager, String idcin) {
     String req = "select * from citoyen where idcin = '" + idcin + "'";
+    System.out.println(req);
     Query query = manager.createNativeQuery(req, FicheSante.class);
     List<FicheSante> citoyens = (List<FicheSante>) query.getResultList();
     FicheSante result = citoyens.get(0);
@@ -52,35 +56,35 @@ public class FicheSante extends Citoyen {
     super();
   }
 
-  public Set<Allergie> getAllergies() {
+  public List<Allergie> getAllergies() {
     return allergie;
   }
 
-  public void setAllergies(Set<Allergie> allergies) {
+  public void setAllergies(List<Allergie> allergies) {
     this.allergie = allergies;
   }
 
-  public Set<Operation> getOperation() {
+  public List<Operation> getOperation() {
     return operation;
   }
 
-  public void setOperation(Set<Operation> operation) {
+  public void setOperation(List<Operation> operation) {
     this.operation = operation;
   }
 
-  public Set<Maladie> getMaladie() {
+  public List<Maladie> getMaladie() {
     return maladie;
   }
 
-  public void setMaladie(Set<Maladie> maladie) {
+  public void setMaladie(List<Maladie> maladie) {
     this.maladie = maladie;
   }
 
-  public Set<Allergie> getAllergie() {
+  public List<Allergie> getAllergie() {
     return allergie;
   }
 
-  public void setAllergie(Set<Allergie> allergie) {
+  public void setAllergie(List<Allergie> allergie) {
     this.allergie = allergie;
   }
 

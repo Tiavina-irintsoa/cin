@@ -32,3 +32,19 @@ create table citoyen_maladie(
     idcin varchar references citoyen(idcin), 
     idMaladie integer references maladie(idMaladie)
 );
+create table devise(
+    iddevise serial primary key, 
+    nomDevise varchar
+);
+create table cours(
+    idcours serial primary key, 
+    idDevise integer references devise(iddevise), 
+    tauxAchat numeric, 
+    tauxVente numeric,
+    dateCours date 
+);
+
+select 
+iddevise, dateCours, taux
+from cours  
+where dateCours = (select max(dateCours) from cours where iddevise = 1 and dateCours <= '2023-10-15') and iddevise = 1
